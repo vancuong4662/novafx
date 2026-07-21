@@ -806,10 +806,31 @@ function TrackEditor({ emitter, onTrackChange, onTrackRemove, onPhaseAdd, onPhas
 }
 
 function TextControl({ label, value, onChange }) {
+  const formattedValue = formatEditorValue(value);
+  const [draftValue, setDraftValue] = useState(formattedValue);
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    if (!isEditing) {
+      setDraftValue(formattedValue);
+    }
+  }, [formattedValue, isEditing]);
+
   return (
     <label className="field-control">
       <span>{label}</span>
-      <input value={formatEditorValue(value)} onChange={(event) => onChange(event.target.value)} />
+      <input
+        value={isEditing ? draftValue : formattedValue}
+        onFocus={() => setIsEditing(true)}
+        onBlur={() => {
+          setIsEditing(false);
+          setDraftValue(formattedValue);
+        }}
+        onChange={(event) => {
+          setDraftValue(event.target.value);
+          onChange(event.target.value);
+        }}
+      />
     </label>
   );
 }
