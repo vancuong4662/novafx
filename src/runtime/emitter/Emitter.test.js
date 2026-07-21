@@ -29,10 +29,10 @@ describe('Emitter', () => {
     expect(emitter.update(0.05, 0.05, 0.1)).toHaveLength(1);
   });
 
-  it('emits nova_point particles with a rotation target and angle offset', () => {
+  it('emits nova_point particles with a rotation target, angle offset, and distance offset', () => {
     const emitter = new Emitter({
       id: 'nova',
-      shape: { type: 'nova_point', x: 12, y: -8, angleOffset: 0.25 },
+      shape: { type: 'nova_point', x: 12, y: -8, angleOffset: 0.25, distanceOffset: { min: 6, max: 12 } },
       emission: { type: 'burst', count: 1 },
       particle: { speed: 10 },
     });
@@ -43,6 +43,7 @@ describe('Emitter', () => {
         position: { x: 12, y: -8 },
         rotationTarget: { x: 12, y: -8 },
         rotationOffset: 0.25,
+        distanceOffset: { min: 6, max: 12 },
         particle: { speed: 10 },
       },
     ]);

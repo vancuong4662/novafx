@@ -16,6 +16,10 @@
         "type": "nova_point",
         "x": 0,
         "y": 0,
+        "distanceOffset": {
+          "min": 12,
+          "max": 36
+        },
         "angleOffset": 0
       },
       "emission": {

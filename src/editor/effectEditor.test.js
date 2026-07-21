@@ -7,6 +7,7 @@ import {
   exportEmitter,
   importEmitter,
   moveEmitter,
+  updateEmitterNestedField,
   updatePhaseField,
   validateEffectJson,
 } from './effectEditor.js';
@@ -35,6 +36,19 @@ describe('effectEditor helpers', () => {
     const edited = addEmitter(baseEffect);
 
     expect(validateEffectJson(edited)).toBe(true);
+  });
+
+  it('parses random range object values entered into new numeric fields', () => {
+    const withEmitter = addEmitter(baseEffect);
+    const edited = updateEmitterNestedField(
+      withEmitter,
+      'emitter-1',
+      'shape',
+      'distanceOffset',
+      '{"min":12,"max":36}',
+    );
+
+    expect(edited.emitters[0].shape.distanceOffset).toEqual({ min: 12, max: 36 });
   });
 
   it('duplicates an emitter with a unique id and cloned nested settings', () => {

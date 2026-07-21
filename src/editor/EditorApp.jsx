@@ -942,7 +942,7 @@ const PRESET_ICONS = {
 
 const SHAPE_DESCRIPTIONS = {
   point: 'Sinh particle tại một điểm x/y cố định. Phù hợp flash, ring, hit marker hoặc core nhỏ.',
-  nova_point: 'Sinh tại một điểm như point, nhưng particle luôn tự xoay rotation để hướng về emitter point; angleOffset cộng thêm vào góc này.',
+  nova_point: 'Sinh quanh emitter point với distanceOffset, rồi particle luôn tự xoay rotation để hướng về lại point. distanceOffset có thể là số hoặc {"min": x, "max": y}.',
   circle: 'Sinh particle ngẫu nhiên trong vùng tròn theo x/y/radius. Phù hợp aura, burst mềm và vùng tỏa đều.',
   line: 'Sinh particle dọc theo đoạn thẳng x1/y1 đến x2/y2. Phù hợp sparks, rain strip hoặc slash trail.',
   box: 'Sinh particle trong vùng chữ nhật x/y/width/height. Phù hợp mưa, bụi nền hoặc vùng spawn rộng.',
@@ -1076,7 +1076,7 @@ function SelectControl({ label, value, options, onChange }) {
 
 function shapeFieldsFor(shapeType) {
   if (shapeType === 'nova_point') {
-    return ['x', 'y', 'angleOffset'];
+    return ['x', 'y', 'distanceOffset', 'angleOffset'];
   }
 
   if (shapeType === 'circle') {

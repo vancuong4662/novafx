@@ -12,6 +12,12 @@ export function cloneEffect(effectJson) {
 }
 
 export function parseEditorValue(value, currentValue) {
+  const rangeValue = parseRangeValue(value);
+
+  if (rangeValue) {
+    return rangeValue;
+  }
+
   if (typeof currentValue === 'number') {
     const parsed = Number(value);
     return Number.isFinite(parsed) ? parsed : currentValue;
@@ -35,6 +41,19 @@ export function parseEditorValue(value, currentValue) {
   }
 
   return value;
+}
+
+function parseRangeValue(value) {
+  if (typeof value !== 'string' || !value.trim().startsWith('{')) {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(value);
+    return isRangeValue(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
 }
 
 export function formatEditorValue(value) {

@@ -20,6 +20,7 @@ export class Particle {
     this.velocityY = 0;
     this.rotationTarget = null;
     this.rotationOffset = 0;
+    this.distanceOffset = 0;
     this.age = 0;
     this.lifetime = 1;
     this.spriteId = null;
@@ -50,6 +51,13 @@ export class Particle {
     this.velocityY = Math.sin(this.angle) * this.speed;
     this.rotationTarget = descriptor.rotationTarget ?? null;
     this.rotationOffset = resolveRandomRange(descriptor.rotationOffset, 0, random);
+    this.distanceOffset = resolveRandomRange(descriptor.distanceOffset, 0, random);
+
+    if (this.distanceOffset !== 0) {
+      this.x += Math.cos(this.angle) * this.distanceOffset;
+      this.y += Math.sin(this.angle) * this.distanceOffset;
+    }
+
     this.age = 0;
     this.lifetime = resolveRandomRange(particleConfig.lifetime, 1, random);
     this.spriteId = particleConfig.spriteId ?? null;
@@ -99,6 +107,7 @@ export class Particle {
     this.blendMode = 'source-over';
     this.rotationTarget = null;
     this.rotationOffset = 0;
+    this.distanceOffset = 0;
     this.tracks = [];
   }
 }

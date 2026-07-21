@@ -151,6 +151,7 @@ export class Emitter {
       if (this.shape.type === 'nova_point') {
         descriptor.rotationTarget = this.getPointPosition();
         descriptor.rotationOffset = this.shape.angleOffset ?? 0;
+        descriptor.distanceOffset = this.shape.distanceOffset ?? 0;
       }
 
       output.push(descriptor);
