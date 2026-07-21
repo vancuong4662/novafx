@@ -9,7 +9,7 @@ The runtime is plain JavaScript, framework-independent, and uses the Canvas 2D A
 - JavaScript Canvas runtime with `NovaFX` public API.
 - Effect JSON v1 parser and template cache.
 - Multiple emitter types: `burst`, `continuous`, `interval`.
-- Emitter shapes: `point`, `circle`, `line`, `box`.
+- Emitter shapes: `point`, `nova_point`, `circle`, `line`, `box`.
 - Particle lifecycle, pooling, sprite assets, blend mode, alpha, color, size, scale, rotation, speed, direction, and gravity.
 - Track and phase system for animated particle properties.
 - Built-in particle shapes from `public/img/particleShapes`.

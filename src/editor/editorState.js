@@ -6,6 +6,7 @@ export const PRESET_EFFECTS = [
   { id: 'explosion', label: 'Explosion', url: '/effects/explosion.json' },
   { id: 'fire', label: 'Fire', url: '/effects/fire.json' },
   { id: 'realistic-fire', label: 'Realistic Fire', url: '/effects/realistic_fire.json' },
+  { id: 'nova-point', label: 'Nova Point', url: '/effects/nova_point.json' },
   { id: 'smoke', label: 'Smoke', url: '/effects/smoke.json' },
   { id: 'heal', label: 'Heal', url: '/effects/heal.json' },
   { id: 'rain', label: 'Rain', url: '/effects/rain.json' },

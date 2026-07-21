@@ -1039,6 +1039,10 @@ function SelectControl({ label, value, options, onChange }) {
 }
 
 function shapeFieldsFor(shapeType) {
+  if (shapeType === 'nova_point') {
+    return ['x', 'y', 'angleOffset'];
+  }
+
   if (shapeType === 'circle') {
     return ['x', 'y', 'radius'];
   }

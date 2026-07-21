@@ -51,6 +51,24 @@ describe('Particle', () => {
     expect(particle.isAlive()).toBe(false);
   });
 
+  it('keeps nova_point particles rotated toward their emitter target with an offset', () => {
+    const particle = new Particle();
+
+    particle.reset({
+      emitterId: 'nova',
+      position: { x: 0, y: 0 },
+      rotationTarget: { x: 0, y: 0 },
+      rotationOffset: Math.PI / 2,
+      particle: { lifetime: 1, speed: 10, angle: 0 },
+    });
+
+    particle.update(0.5);
+
+    expect(particle.x).toBe(5);
+    expect(particle.y).toBe(0);
+    expect(particle.rotation).toBeCloseTo(Math.PI + Math.PI / 2);
+  });
+
   it('updates alpha, size, rotation, speed, direction, gravity, and color tracks', () => {
     const particle = new Particle();
 

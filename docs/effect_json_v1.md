@@ -84,6 +84,7 @@ Từ Phase 4, mỗi item trong `emitters` có format cơ bản:
 ### Shape type
 
 * `point`: sinh tại `x`, `y`.
+* `nova_point`: sinh tại `x`, `y` như `point`, đồng thời mỗi particle luôn tự cập nhật `rotation` để hướng về lại điểm emitter trong lúc di chuyển. `angleOffset` là góc cộng thêm, tính bằng radian.
 * `circle`: sinh trong hình tròn `x`, `y`, `radius`.
 * `line`: sinh trên đoạn thẳng `x1`, `y1`, `x2`, `y2`.
 * `box`: sinh trong vùng chữ nhật `x`, `y`, `width`, `height`.

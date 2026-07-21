@@ -4,7 +4,7 @@ import { BUILT_IN_PARTICLE_SHAPES } from '../runtime/asset/builtInParticleShapes
 export const TRACK_PROPERTIES = ['alpha', 'size', 'rotation', 'speed', 'direction', 'gravity', 'color'];
 export const END_CONDITION_TYPES = ['duration', 'targetReached', 'lifetimePercentage', 'manual'];
 export const EMISSION_TYPES = ['burst', 'continuous', 'interval'];
-export const SHAPE_TYPES = ['point', 'circle', 'line', 'box'];
+export const SHAPE_TYPES = ['point', 'nova_point', 'circle', 'line', 'box'];
 export const SPRITE_IDS = BUILT_IN_PARTICLE_SHAPES.map((shape) => shape.id);
 
 export function cloneEffect(effectJson) {

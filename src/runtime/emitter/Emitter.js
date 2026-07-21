@@ -141,11 +141,19 @@ export class Emitter {
    */
   spawn(count, output = []) {
     for (let index = 0; index < count; index += 1) {
-      output.push({
+      const position = this.getSpawnPosition();
+      const descriptor = {
         emitterId: this.id,
-        position: this.getSpawnPosition(),
+        position,
         particle: this.particle,
-      });
+      };
+
+      if (this.shape.type === 'nova_point') {
+        descriptor.rotationTarget = this.getPointPosition();
+        descriptor.rotationOffset = this.shape.angleOffset ?? 0;
+      }
+
+      output.push(descriptor);
     }
 
     return output;
@@ -167,6 +175,13 @@ export class Emitter {
       return this.getBoxPosition();
     }
 
+    return this.getPointPosition();
+  }
+
+  /**
+   * @returns {{x: number, y: number}}
+   */
+  getPointPosition() {
     return {
       x: this.shape.x ?? 0,
       y: this.shape.y ?? 0,

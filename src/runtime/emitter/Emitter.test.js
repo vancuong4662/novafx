@@ -29,6 +29,25 @@ describe('Emitter', () => {
     expect(emitter.update(0.05, 0.05, 0.1)).toHaveLength(1);
   });
 
+  it('emits nova_point particles with a rotation target and angle offset', () => {
+    const emitter = new Emitter({
+      id: 'nova',
+      shape: { type: 'nova_point', x: 12, y: -8, angleOffset: 0.25 },
+      emission: { type: 'burst', count: 1 },
+      particle: { speed: 10 },
+    });
+
+    expect(emitter.update(0.016, 0, 0.016)).toEqual([
+      {
+        emitterId: 'nova',
+        position: { x: 12, y: -8 },
+        rotationTarget: { x: 12, y: -8 },
+        rotationOffset: 0.25,
+        particle: { speed: 10 },
+      },
+    ]);
+  });
+
   it('emits on an interval when loop is enabled', () => {
     const emitter = new Emitter({
       id: 'spark',

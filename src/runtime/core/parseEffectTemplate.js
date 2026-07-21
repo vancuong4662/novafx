@@ -2,7 +2,7 @@ import { EffectTemplate } from './EffectTemplate.js';
 
 const REQUIRED_SURFACE_FIELDS = ['width', 'height', 'blendMode'];
 const EMISSION_TYPES = new Set(['burst', 'continuous', 'interval']);
-const SHAPE_TYPES = new Set(['point', 'circle', 'line', 'box']);
+const SHAPE_TYPES = new Set(['point', 'nova_point', 'circle', 'line', 'box']);
 const TRACK_PROPERTIES = new Set([
   'alpha',
   'size',

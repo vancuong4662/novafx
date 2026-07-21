@@ -47,4 +47,25 @@ describe('parseEffectTemplate', () => {
     expect(firstClone.emitters).not.toBe(secondClone.emitters);
     expect(firstClone.name).toBe('Spark');
   });
+
+  it('accepts nova_point emitter shapes with angle offsets', () => {
+    const template = parseEffectTemplate({
+      id: 'nova-point-demo',
+      version: 1,
+      duration: 1,
+      surface: {
+        width: 128,
+        height: 128,
+        blendMode: 'source-over',
+      },
+      emitters: [
+        {
+          id: 'nova',
+          shape: { type: 'nova_point', x: 0, y: 0, angleOffset: 1.5708 },
+        },
+      ],
+    });
+
+    expect(template.emitters[0].shape).toEqual({ type: 'nova_point', x: 0, y: 0, angleOffset: 1.5708 });
+  });
 });

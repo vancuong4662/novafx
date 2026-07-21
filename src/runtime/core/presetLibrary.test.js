@@ -13,6 +13,7 @@ describe('preset effect library', () => {
       'explosion.json',
       'fire.json',
       'heal.json',
+      'nova_point.json',
       'rain.json',
       'realistic_fire.json',
       'smoke.json',

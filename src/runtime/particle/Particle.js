@@ -18,6 +18,8 @@ export class Particle {
     this.blendMode = 'source-over';
     this.velocityX = 0;
     this.velocityY = 0;
+    this.rotationTarget = null;
+    this.rotationOffset = 0;
     this.age = 0;
     this.lifetime = 1;
     this.spriteId = null;
@@ -46,6 +48,8 @@ export class Particle {
     this.blendMode = particleConfig.blendMode ?? 'source-over';
     this.velocityX = Math.cos(this.angle) * this.speed;
     this.velocityY = Math.sin(this.angle) * this.speed;
+    this.rotationTarget = descriptor.rotationTarget ?? null;
+    this.rotationOffset = resolveRandomRange(descriptor.rotationOffset, 0, random);
     this.age = 0;
     this.lifetime = resolveRandomRange(particleConfig.lifetime, 1, random);
     this.spriteId = particleConfig.spriteId ?? null;
@@ -70,6 +74,15 @@ export class Particle {
     this.velocityY += this.gravity * deltaTime;
     this.x += this.velocityX * deltaTime;
     this.y += this.velocityY * deltaTime;
+    this.updateFacingRotation();
+  }
+
+  updateFacingRotation() {
+    if (!this.rotationTarget) {
+      return;
+    }
+
+    this.rotation = Math.atan2(this.rotationTarget.y - this.y, this.rotationTarget.x - this.x) + this.rotationOffset;
   }
 
   /**
@@ -84,6 +97,8 @@ export class Particle {
     this.emitterId = null;
     this.spriteId = null;
     this.blendMode = 'source-over';
+    this.rotationTarget = null;
+    this.rotationOffset = 0;
     this.tracks = [];
   }
 }
