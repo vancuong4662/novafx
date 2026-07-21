@@ -1,0 +1,437 @@
+{
+  "id": "realistic-fire",
+  "name": "Realistic Fire",
+  "version": 1,
+  "duration": 2.8,
+  "surface": {
+    "width": 360,
+    "height": 360,
+    "blendMode": "source-over"
+  },
+  "emitters": [
+    {
+      "id": "hot-core",
+      "enabled": true,
+      "shape": {
+        "type": "box",
+        "x": -18,
+        "y": 58,
+        "width": 36,
+        "height": 10
+      },
+      "emission": {
+        "type": "continuous",
+        "rate": 380,
+        "startTime": 0
+      },
+      "particle": {
+        "lifetime": {
+          "min": 0.35,
+          "max": 0.68
+        },
+        "size": {
+          "min": 7,
+          "max": 15
+        },
+        "speed": {
+          "min": 42,
+          "max": 82
+        },
+        "angle": {
+          "min": -1.86,
+          "max": -1.24
+        },
+        "gravity": -16,
+        "alpha": 0.96,
+        "color": "#fff3a6",
+        "blendMode": "lighter",
+        "spriteId": "soft-circle",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.92,
+                "to": 0.88,
+                "duration": 0.12,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.88,
+                "duration": 0.38,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 5,
+                "to": 14,
+                "duration": 0.18,
+                "randomChange": {
+                  "min": -2,
+                  "max": 3
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 14,
+                "to": 3,
+                "duration": 0.38,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "color",
+            "phases": [
+              {
+                "from": "#fff7c2",
+                "to": "#ffad38",
+                "duration": 0.24,
+                "endCondition": {
+                  "type": "lifetimePercentage",
+                  "value": 0.55
+                }
+              },
+              {
+                "from": "#ffad38",
+                "to": "#b33d16",
+                "duration": 0.24,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "outer-flame",
+      "enabled": true,
+      "shape": {
+        "type": "box",
+        "x": -34,
+        "y": 60,
+        "width": 68,
+        "height": 14
+      },
+      "emission": {
+        "type": "continuous",
+        "rate": 250,
+        "startTime": 0
+      },
+      "particle": {
+        "lifetime": {
+          "min": 0.75,
+          "max": 1.2
+        },
+        "size": {
+          "min": 14,
+          "max": 30
+        },
+        "speed": {
+          "min": 24,
+          "max": 54
+        },
+        "angle": {
+          "min": -2.08,
+          "max": -1.04
+        },
+        "gravity": -12,
+        "alpha": 0.78,
+        "color": "#ff7b24",
+        "blendMode": "lighter",
+        "spriteId": "flare",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.72,
+                "to": 0.6,
+                "duration": 0.22,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.6,
+                "duration": 0.7,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 12,
+                "to": 38,
+                "duration": 0.46,
+                "randomChange": {
+                  "min": -6,
+                  "max": 8
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 38,
+                "to": 6,
+                "duration": 0.5,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "color",
+            "phases": [
+              {
+                "from": "#ffbe4a",
+                "to": "#ff5a1e",
+                "duration": 0.42,
+                "endCondition": {
+                  "type": "lifetimePercentage",
+                  "value": 0.55
+                }
+              },
+              {
+                "from": "#ff5a1e",
+                "to": "#2b1510",
+                "duration": 0.48,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "rotation",
+            "phases": [
+              {
+                "from": -0.35,
+                "to": 0.55,
+                "duration": 0.95,
+                "randomChange": {
+                  "min": -0.35,
+                  "max": 0.35
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "embers",
+      "enabled": true,
+      "shape": {
+        "type": "box",
+        "x": -28,
+        "y": 48,
+        "width": 56,
+        "height": 8
+      },
+      "emission": {
+        "type": "interval",
+        "count": 5,
+        "interval": 0.09,
+        "loop": true
+      },
+      "particle": {
+        "lifetime": {
+          "min": 0.85,
+          "max": 1.5
+        },
+        "size": {
+          "min": 2,
+          "max": 6
+        },
+        "speed": {
+          "min": 34,
+          "max": 86
+        },
+        "angle": {
+          "min": -2.35,
+          "max": -0.82
+        },
+        "gravity": 10,
+        "alpha": 0.88,
+        "color": "#ffcf62",
+        "blendMode": "lighter",
+        "spriteId": "spark",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.9,
+                "to": 0.58,
+                "duration": 0.35,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.58,
+                "duration": 0.8,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "color",
+            "phases": [
+              {
+                "from": "#ffe18a",
+                "to": "#ff7a24",
+                "duration": 0.6,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": "#ff7a24",
+                "to": "#2d1811",
+                "duration": 0.6,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "dark-smoke",
+      "enabled": true,
+      "shape": {
+        "type": "circle",
+        "x": 0,
+        "y": 22,
+        "radius": 24
+      },
+      "emission": {
+        "type": "interval",
+        "count": 4,
+        "interval": 0.16,
+        "loop": true
+      },
+      "particle": {
+        "lifetime": {
+          "min": 1.35,
+          "max": 2.25
+        },
+        "size": {
+          "min": 18,
+          "max": 34
+        },
+        "speed": {
+          "min": 12,
+          "max": 30
+        },
+        "angle": {
+          "min": -2.0,
+          "max": -1.05
+        },
+        "gravity": -4,
+        "alpha": 0.34,
+        "color": "#5e5a53",
+        "blendMode": "source-over",
+        "spriteId": "smoke",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.26,
+                "to": 0.34,
+                "duration": 0.32,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.34,
+                "duration": 1.35,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 20,
+                "to": 72,
+                "duration": 1.65,
+                "randomChange": {
+                  "min": -8,
+                  "max": 14
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "rotation",
+            "phases": [
+              {
+                "from": -0.5,
+                "to": 0.9,
+                "duration": 1.8,
+                "randomChange": {
+                  "min": -0.45,
+                  "max": 0.45
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "color",
+            "phases": [
+              {
+                "from": "#6c6258",
+                "to": "#3e3b36",
+                "duration": 1.2,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

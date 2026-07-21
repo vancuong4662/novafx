@@ -1,0 +1,16 @@
+export const BUILT_IN_PARTICLE_SHAPES = [
+  { id: 'circle', src: '/img/particleShapes/round.png' },
+  { id: 'soft-circle', src: '/img/particleShapes/flare.png' },
+  { id: 'ring', src: '/img/particleShapes/ring.png' },
+  { id: 'pixel', src: '/img/particleShapes/pixel.png' },
+  { id: 'star', src: '/img/particleShapes/star.png' },
+  { id: 'flare', src: '/img/particleShapes/flare.png' },
+  { id: 'spark', src: '/img/particleShapes/spark.png' },
+  { id: 'smoke', src: '/img/particleShapes/cloud.png' },
+  { id: 'line', src: '/img/particleShapes/line.png' },
+  { id: 'square', src: '/img/particleShapes/square.png' },
+  { id: 'diamond', src: '/img/particleShapes/diamond.png' },
+  { id: 'hexagon', src: '/img/particleShapes/hexagon.png' },
+  { id: 'snow', src: '/img/particleShapes/snow.png' },
+  { id: 'dot', src: '/img/particleShapes/dot.png' },
+];

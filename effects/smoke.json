@@ -1,0 +1,107 @@
+{
+  "id": "smoke",
+  "name": "Smoke",
+  "version": 1,
+  "duration": 2.4,
+  "surface": {
+    "width": 320,
+    "height": 320,
+    "blendMode": "source-over"
+  },
+  "emitters": [
+    {
+      "id": "puffs",
+      "enabled": true,
+      "shape": {
+        "type": "circle",
+        "x": 0,
+        "y": 34,
+        "radius": 18
+      },
+      "emission": {
+        "type": "interval",
+        "count": 5,
+        "interval": 0.18,
+        "loop": true
+      },
+      "particle": {
+        "lifetime": {
+          "min": 1.15,
+          "max": 1.85
+        },
+        "size": {
+          "min": 14,
+          "max": 28
+        },
+        "speed": {
+          "min": 14,
+          "max": 28
+        },
+        "angle": {
+          "min": -2.05,
+          "max": -1.08
+        },
+        "gravity": -6,
+        "alpha": 0.42,
+        "color": "#a9a89f",
+        "spriteId": "smoke",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.38,
+                "to": 0.32,
+                "duration": 0.35,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.32,
+                "duration": 1.15,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 18,
+                "to": 58,
+                "duration": 1.4,
+                "randomChange": {
+                  "min": -6,
+                  "max": 12
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "rotation",
+            "phases": [
+              {
+                "from": -0.4,
+                "to": 0.8,
+                "duration": 1.6,
+                "randomChange": {
+                  "min": -0.4,
+                  "max": 0.4
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

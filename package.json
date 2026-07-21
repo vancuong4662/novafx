@@ -1,0 +1,30 @@
+{
+  "name": "novafx",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "NovaFX is a data-driven 2D visual effect framework for JavaScript Canvas.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:runtime": "vite build --config vite.runtime.config.js",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "zustand": "latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "latest",
+    "eslint": "latest",
+    "globals": "latest",
+    "prettier": "latest",
+    "vite": "latest",
+    "vitest": "latest"
+  }
+}

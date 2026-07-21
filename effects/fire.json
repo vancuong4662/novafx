@@ -1,0 +1,121 @@
+{
+  "id": "fire",
+  "name": "Fire",
+  "version": 1,
+  "duration": 1.8,
+  "surface": {
+    "width": 256,
+    "height": 256,
+    "blendMode": "source-over"
+  },
+  "emitters": [
+    {
+      "id": "embers",
+      "enabled": true,
+      "shape": {
+        "type": "box",
+        "x": -26,
+        "y": 42,
+        "width": 52,
+        "height": 10
+      },
+      "emission": {
+        "type": "continuous",
+        "rate": 500,
+        "startTime": 0
+      },
+      "particle": {
+        "lifetime": {
+          "min": 0.55,
+          "max": 0.95
+        },
+        "size": {
+          "min": 8,
+          "max": 18
+        },
+        "speed": {
+          "min": 36,
+          "max": 74
+        },
+        "angle": {
+          "min": -1.95,
+          "max": -1.18
+        },
+        "gravity": -18,
+        "alpha": 0.92,
+        "color": "#ffb23f",
+        "blendMode": "lighter",
+        "spriteId": "smoke",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.9,
+                "to": 0.75,
+                "duration": 0.18,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.75,
+                "duration": 0.62,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 3,
+                "to": 10,
+                "duration": 0.24,
+                "randomChange": {
+                  "min": -2,
+                  "max": 3
+                },
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 10,
+                "to": 1,
+                "duration": 0.58,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "color",
+            "phases": [
+              {
+                "from": "#fff1a8",
+                "to": "#ff6a1f",
+                "duration": 0.35,
+                "endCondition": {
+                  "type": "lifetimePercentage",
+                  "value": 0.55
+                }
+              },
+              {
+                "from": "#ff6a1f",
+                "to": "#3b1d12",
+                "duration": 0.45,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

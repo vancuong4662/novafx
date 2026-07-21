@@ -1,0 +1,140 @@
+{
+  "id": "rain",
+  "name": "Rain",
+  "version": 1,
+  "duration": 2,
+  "surface": {
+    "width": 360,
+    "height": 360,
+    "blendMode": "source-over"
+  },
+  "emitters": [
+    {
+      "id": "drops",
+      "enabled": true,
+      "shape": {
+        "type": "line",
+        "x1": -150,
+        "y1": -142,
+        "x2": 150,
+        "y2": -142
+      },
+      "emission": {
+        "type": "continuous",
+        "rate": 90,
+        "startTime": 0
+      },
+      "particle": {
+        "lifetime": {
+          "min": 0.55,
+          "max": 0.85
+        },
+        "size": {
+          "min": 7,
+          "max": 14
+        },
+        "scale": {
+          "min": 0.65,
+          "max": 1.1
+        },
+        "speed": {
+          "min": 240,
+          "max": 330
+        },
+        "angle": {
+          "min": 1.33,
+          "max": 1.48
+        },
+        "gravity": 90,
+        "alpha": 0.7,
+        "color": "#9fd5ff",
+        "spriteId": "line",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.7,
+                "to": 0.55,
+                "duration": 0.2,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.55,
+                "duration": 0.45,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "rotation",
+            "phases": [
+              {
+                "from": 1.42,
+                "to": 1.42,
+                "duration": 0.6,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "splashes",
+      "enabled": true,
+      "shape": {
+        "type": "line",
+        "x1": -130,
+        "y1": 128,
+        "x2": 130,
+        "y2": 128
+      },
+      "emission": {
+        "type": "interval",
+        "count": 8,
+        "interval": 0.12,
+        "loop": true
+      },
+      "particle": {
+        "lifetime": 0.28,
+        "size": {
+          "min": 2,
+          "max": 5
+        },
+        "speed": {
+          "min": 36,
+          "max": 88
+        },
+        "angle": {
+          "min": -2.8,
+          "max": -0.35
+        },
+        "gravity": 110,
+        "alpha": 0.58,
+        "color": "#d6efff",
+        "spriteId": "pixel",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.58,
+                "duration": 0.24,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

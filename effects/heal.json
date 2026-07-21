@@ -1,0 +1,200 @@
+{
+  "id": "heal",
+  "name": "Heal",
+  "version": 1,
+  "duration": 1.7,
+  "surface": {
+    "width": 280,
+    "height": 280,
+    "blendMode": "lighter"
+  },
+  "emitters": [
+    {
+      "id": "aura",
+      "enabled": true,
+      "shape": {
+        "type": "circle",
+        "x": 0,
+        "y": 18,
+        "radius": 46
+      },
+      "emission": {
+        "type": "continuous",
+        "count": 40,
+        "startTime": 0,
+        "rate": 80
+      },
+      "particle": {
+        "lifetime": {
+          "min": 0.85,
+          "max": 1.25
+        },
+        "size": {
+          "min": 5,
+          "max": 11
+        },
+        "speed": {
+          "min": 18,
+          "max": 42
+        },
+        "angle": {
+          "min": -1.95,
+          "max": -1.18
+        },
+        "gravity": -20,
+        "alpha": 0.85,
+        "color": "#9af6a1",
+        "blendMode": "lighter",
+        "spriteId": "spark",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.85,
+                "to": 0.65,
+                "duration": 0.25,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.65,
+                "duration": 0.8,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "rotation",
+            "phases": [
+              {
+                "from": 0,
+                "to": 5,
+                "duration": 1,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "color",
+            "phases": [
+              {
+                "from": "#efffd9",
+                "to": "#45d179",
+                "duration": 0.75,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ring 1",
+      "enabled": true,
+      "shape": {
+        "type": "point",
+        "x": 0,
+        "y": 8
+      },
+      "emission": {
+        "type": "burst",
+        "count": 1,
+        "startTime": 0
+      },
+      "particle": {
+        "lifetime": 0.9,
+        "size": 28,
+        "speed": 0,
+        "alpha": 0.9,
+        "color": "#bdf7ba",
+        "blendMode": "lighter",
+        "spriteId": "ring",
+        "tracks": [
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 20,
+                "to": 80,
+                "duration": 0.8,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.9,
+                "duration": 0.8,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ring 2",
+      "enabled": true,
+      "shape": {
+        "type": "point",
+        "x": 0,
+        "y": 8
+      },
+      "emission": {
+        "type": "burst",
+        "count": 1,
+        "startTime": 0
+      },
+      "particle": {
+        "lifetime": 0.9,
+        "size": 20,
+        "speed": 0,
+        "alpha": 0.9,
+        "color": "#bdf7ba",
+        "blendMode": "lighter",
+        "spriteId": "ring",
+        "tracks": [
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 10,
+                "to": 100,
+                "duration": 0.8,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 0.9,
+                "duration": 0.8,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

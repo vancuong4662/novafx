@@ -1,0 +1,178 @@
+{
+  "id": "explosion",
+  "name": "Explosion",
+  "version": 1,
+  "duration": 1.2,
+  "surface": {
+    "width": 256,
+    "height": 256,
+    "blendMode": "source-over"
+  },
+  "emitters": [
+    {
+      "id": "flash",
+      "enabled": true,
+      "shape": {
+        "type": "circle",
+        "x": 0,
+        "y": 0,
+        "radius": 32
+      },
+      "emission": {
+        "type": "burst",
+        "count": 24,
+        "startTime": 0
+      },
+      "particle": {
+        "lifetime": {
+          "min": 0.35,
+          "max": 0.7
+        },
+        "size": {
+          "min": 2,
+          "max": 6
+        },
+        "speed": {
+          "min": 12,
+          "max": 36
+        },
+        "alpha": 1,
+        "color": "#f4cd69",
+        "angle": {
+          "min": 0,
+          "max": 6.283185307179586
+        },
+        "spriteId": "circle",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 1,
+                "to": 0.85,
+                "duration": 0.08,
+                "endCondition": {
+                  "type": "duration"
+                }
+              },
+              {
+                "from": 0.85,
+                "duration": 0.62,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "size",
+            "phases": [
+              {
+                "from": 2,
+                "to": 10,
+                "duration": 0.5,
+                "randomChange": {
+                  "min": -1,
+                  "max": 2
+                },
+                "endCondition": {
+                  "type": "targetReached"
+                }
+              }
+            ]
+          },
+          {
+            "property": "color",
+            "phases": [
+              {
+                "from": "#ffffff",
+                "to": "#ff5722",
+                "duration": 0.4,
+                "endCondition": {
+                  "type": "lifetimePercentage",
+                  "value": 0.8
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "sparks",
+      "enabled": true,
+      "shape": {
+        "type": "line",
+        "x1": -48,
+        "y1": 0,
+        "x2": 48,
+        "y2": 0
+      },
+      "emission": {
+        "type": "interval",
+        "count": 4,
+        "interval": 0.12,
+        "loop": true
+      },
+      "particle": {
+        "lifetime": 0.45,
+        "size": {
+          "min": 1,
+          "max": 3
+        },
+        "speed": {
+          "min": 24,
+          "max": 54
+        },
+        "alpha": 1,
+        "color": "#f5f0e8",
+        "gravity": 40,
+        "angle": {
+          "min": -0.8,
+          "max": 0.8
+        },
+        "spriteId": "spark",
+        "tracks": [
+          {
+            "property": "alpha",
+            "phases": [
+              {
+                "from": 1,
+                "duration": 0.45,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "rotation",
+            "phases": [
+              {
+                "from": 0,
+                "to": 6.283185307179586,
+                "duration": 0.45,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          },
+          {
+            "property": "gravity",
+            "phases": [
+              {
+                "from": 20,
+                "to": 80,
+                "duration": 0.45,
+                "endCondition": {
+                  "type": "duration"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
