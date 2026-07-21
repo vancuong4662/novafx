@@ -441,19 +441,20 @@ export function EditorApp() {
     <main className="editor-shell">
       <aside className="editor-sidebar">
         <p className="eyebrow">NovaFX Editor</p>
-        <h1>Effect Workspace</h1>
+        <h1><Icon name="stars" />Effect Workspace</h1>
         <section className="editor-section">
-          <h2>Presets</h2>
+          <h2><Icon name="collection-play" />Presets</h2>
           <div className="preset-list">
             {PRESET_EFFECTS.map((preset) => (
               <button key={preset.id} type="button" onClick={() => loadPreset(preset)}>
+                <Icon name={presetIconFor(preset.id)} />
                 {preset.label}
               </button>
             ))}
           </div>
         </section>
         <section className="editor-section">
-          <h2>Asset Panel</h2>
+          <h2><Icon name="images" />Asset Panel</h2>
           <AssetPanel
             builtInAssets={BUILT_IN_PARTICLE_SHAPES}
             customAssets={customAssets}
@@ -467,10 +468,11 @@ export function EditorApp() {
             onManifestExport={handleExportAssetManifest}
           />
           <label className="file-action">
+            <Icon name="image" />
             Upload Background
             <input type="file" accept="image/*" onChange={handleBackgroundUpload} />
           </label>
-          <button type="button" onClick={resetBackground}>Use Forest</button>
+          <button type="button" onClick={resetBackground}><Icon name="tree" />Use Forest</button>
         </section>
       </aside>
 
@@ -478,15 +480,16 @@ export function EditorApp() {
         <div className="preview-header">
           <div>
             <p className="eyebrow">Preview</p>
-            <h2>{sourceName}</h2>
+            <h2><Icon name="play-circle" />{sourceName}</h2>
           </div>
           <div className="preview-actions">
             <label className="file-action">
+              <Icon name="file-earmark-arrow-up" />
               Import JSON
               <input type="file" accept="application/json,.json" onChange={handleImportJson} />
             </label>
-            <button type="button" onClick={handleExportJson}>Export JSON</button>
-            <button type="button" onClick={() => effectJson && loadEffectIntoPreview(effectJson)}>Replay</button>
+            <button type="button" onClick={handleExportJson}><Icon name="download" />Export JSON</button>
+            <button type="button" onClick={() => effectJson && loadEffectIntoPreview(effectJson)}><Icon name="arrow-clockwise" />Replay</button>
           </div>
         </div>
         <canvas ref={canvasRef} width="960" height="540" aria-label="NovaFX editor preview canvas" />
@@ -497,14 +500,14 @@ export function EditorApp() {
 
       <aside className="inspector-panel">
         <section className="editor-section">
-          <h2>Inspector</h2>
+          <h2><Icon name="sliders" />Inspector</h2>
           <EffectControls effectJson={effectJson} onChange={(field, value) => commitEffect(updateEffectField(effectJson, field, value))} />
           <SurfaceControls effectJson={effectJson} onChange={(field, value) => commitEffect(updateSurfaceField(effectJson, field, value))} />
         </section>
         <section className="editor-section">
           <div className="section-heading-row">
-            <h2>Emitter</h2>
-            <button type="button" onClick={() => commitEffect(addEmitter(effectJson))}>Add</button>
+            <h2><Icon name="broadcast-pin" />Emitter</h2>
+            <button type="button" onClick={() => commitEffect(addEmitter(effectJson))}><Icon name="plus-lg" />Add</button>
           </div>
           <div className="emitter-tabs">
             {effectJson?.emitters?.map((emitter) => (
@@ -540,8 +543,8 @@ export function EditorApp() {
         </section>
         <section className="editor-section">
           <div className="section-heading-row">
-            <h2>Track Editor</h2>
-            <button type="button" disabled={!selectedEmitter} onClick={() => commitEffect(addTrack(effectJson, selectedEmitter.id))}>Add Track</button>
+            <h2><Icon name="diagram-3" />Track Editor</h2>
+            <button type="button" disabled={!selectedEmitter} onClick={() => commitEffect(addTrack(effectJson, selectedEmitter.id))}><Icon name="plus-lg" />Add Track</button>
           </div>
           <TrackEditor
             effectJson={effectJson}
@@ -555,9 +558,9 @@ export function EditorApp() {
           />
         </section>
         <section className="editor-section json-editor-section">
-          <h2>Effect JSON</h2>
+          <h2><Icon name="braces" />Effect JSON</h2>
           <textarea value={jsonText} spellCheck="false" onChange={(event) => setJsonText(event.target.value)} />
-          <button type="button" onClick={handleApplyJson}>Apply JSON</button>
+          <button type="button" onClick={handleApplyJson}><Icon name="check2-circle" />Apply JSON</button>
         </section>
       </aside>
     </main>
@@ -578,8 +581,8 @@ function AssetPanel({
 }) {
   return (
     <div className="asset-panel-stack">
-      <p>Background: {backgroundName}</p>
-      <h3>Built-in Shapes</h3>
+      <p><Icon name="card-image" />Background: {backgroundName}</p>
+      <h3><Icon name="grid-3x3-gap" />Built-in Shapes</h3>
       <div className="asset-grid">
         {builtInAssets.map((asset) => (
           <button
@@ -594,8 +597,9 @@ function AssetPanel({
         ))}
       </div>
       <div className="section-heading-row asset-heading">
-        <h3>Custom PNG</h3>
+        <h3><Icon name="filetype-png" />Custom PNG</h3>
         <label className="file-action compact-action">
+          <Icon name="upload" />
           Upload
           <input type="file" accept="image/png,.png" onChange={onCustomUpload} />
         </label>
@@ -626,7 +630,7 @@ function AssetPanel({
           ))}
         </div>
       )}
-      <button type="button" onClick={onManifestExport}>Export Asset Manifest</button>
+      <button type="button" onClick={onManifestExport}><Icon name="box-arrow-up" />Export Asset Manifest</button>
     </div>
   );
 }
@@ -688,15 +692,16 @@ function EmitterControls({
       <div className="section-heading-row inline-row">
         <TextControl label="Emitter ID" value={emitter.id} onChange={(value) => onEmitterChange('id', value)} />
         <div className="button-row">
-          <button type="button" disabled={!canMoveUp} onClick={() => onMove('up')}>Up</button>
-          <button type="button" disabled={!canMoveDown} onClick={() => onMove('down')}>Down</button>
-          <button type="button" onClick={onDuplicate}>Duplicate</button>
-          <button type="button" onClick={onExport}>Export</button>
+          <button type="button" disabled={!canMoveUp} onClick={() => onMove('up')}><Icon name="arrow-up" />Up</button>
+          <button type="button" disabled={!canMoveDown} onClick={() => onMove('down')}><Icon name="arrow-down" />Down</button>
+          <button type="button" onClick={onDuplicate}><Icon name="copy" />Duplicate</button>
+          <button type="button" onClick={onExport}><Icon name="download" />Export</button>
           <label className="file-action">
+            <Icon name="upload" />
             Import
             <input type="file" accept="application/json,.json" onChange={onImport} />
           </label>
-          <button type="button" onClick={onRemove}>Remove</button>
+          <button type="button" onClick={onRemove}><Icon name="trash3" />Remove</button>
         </div>
       </div>
       <label className="toggle-control">
@@ -704,15 +709,16 @@ function EmitterControls({
         Enabled
       </label>
 
-      <h3>Shape</h3>
+      <h3><Icon name="bounding-box" />Shape</h3>
       <div className="control-grid compact-controls">
         <SelectControl label="Type" value={emitter.shape.type} options={SHAPE_TYPES} onChange={(value) => onShapeChange('type', value)} />
         {shapeFieldsFor(emitter.shape.type).map((fieldName) => (
           <TextControl key={fieldName} label={fieldName} value={emitter.shape[fieldName] ?? 0} onChange={(value) => onShapeChange(fieldName, value)} />
         ))}
       </div>
+      <p className="shape-type-description"><Icon name="info-circle" />{shapeDescriptionFor(emitter.shape.type)}</p>
 
-      <h3>Emission</h3>
+      <h3><Icon name="activity" />Emission</h3>
       <div className="control-grid compact-controls">
         <SelectControl label="Type" value={emitter.emission.type} options={EMISSION_TYPES} onChange={(value) => onEmissionChange('type', value)} />
         <TextControl label="Count" value={emitter.emission.count ?? 1} onChange={(value) => onEmissionChange('count', value)} />
@@ -724,7 +730,7 @@ function EmitterControls({
         Loop emission
       </label>
 
-      <h3>Particle</h3>
+      <h3><Icon name="stars" />Particle</h3>
       <div className="control-grid compact-controls">
         <TextControl label="Lifetime" value={emitter.particle?.lifetime ?? 1} onChange={(value) => onParticleChange('lifetime', value)} />
         <TextControl label="Size" value={emitter.particle?.size ?? 4} onChange={(value) => onParticleChange('size', value)} />
@@ -761,17 +767,17 @@ function TrackEditor({ emitter, onTrackChange, onTrackRemove, onPhaseAdd, onPhas
               options={TRACK_PROPERTIES}
               onChange={(value) => onTrackChange(trackIndex, 'property', value)}
             />
-            <button type="button" onClick={() => onTrackRemove(trackIndex)}>Remove</button>
+            <button type="button" onClick={() => onTrackRemove(trackIndex)}><Icon name="trash3" />Remove</button>
           </div>
           <div className="section-heading-row phase-heading">
             <strong>{track.phases?.length ?? 1} phase(s)</strong>
-            <button type="button" onClick={() => onPhaseAdd(trackIndex)}>Add Phase</button>
+            <button type="button" onClick={() => onPhaseAdd(trackIndex)}><Icon name="plus-lg" />Add Phase</button>
           </div>
           {(track.phases ?? []).map((phase, phaseIndex) => (
             <div className="phase-card" key={phaseIndex}>
               <div className="section-heading-row phase-heading">
-                <strong>Phase {phaseIndex + 1}</strong>
-                <button type="button" onClick={() => onPhaseRemove(trackIndex, phaseIndex)}>Remove</button>
+                <strong><Icon name="bezier2" />Phase {phaseIndex + 1}</strong>
+                <button type="button" onClick={() => onPhaseRemove(trackIndex, phaseIndex)}><Icon name="trash3" />Remove</button>
               </div>
               <div className="control-grid compact-controls">
                 {track.property === 'color' ? (
@@ -914,6 +920,36 @@ function ColorSlider({ label, value, min, max, gradient, onChange }) {
       <output>{value}</output>
     </label>
   );
+}
+
+function Icon({ name }) {
+  return <i className={`bi bi-${name}`} aria-hidden="true" />;
+}
+
+function presetIconFor(presetId) {
+  return PRESET_ICONS[presetId] ?? 'stars';
+}
+
+const PRESET_ICONS = {
+  explosion: 'stars',
+  fire: 'fire',
+  'realistic-fire': 'fire',
+  'nova-point': 'bullseye',
+  smoke: 'cloud-fog2',
+  heal: 'heart-pulse',
+  rain: 'cloud-rain-heavy',
+};
+
+const SHAPE_DESCRIPTIONS = {
+  point: 'Sinh particle tại một điểm x/y cố định. Phù hợp flash, ring, hit marker hoặc core nhỏ.',
+  nova_point: 'Sinh tại một điểm như point, nhưng particle luôn tự xoay rotation để hướng về emitter point; angleOffset cộng thêm vào góc này.',
+  circle: 'Sinh particle ngẫu nhiên trong vùng tròn theo x/y/radius. Phù hợp aura, burst mềm và vùng tỏa đều.',
+  line: 'Sinh particle dọc theo đoạn thẳng x1/y1 đến x2/y2. Phù hợp sparks, rain strip hoặc slash trail.',
+  box: 'Sinh particle trong vùng chữ nhật x/y/width/height. Phù hợp mưa, bụi nền hoặc vùng spawn rộng.',
+};
+
+function shapeDescriptionFor(shapeType) {
+  return SHAPE_DESCRIPTIONS[shapeType] ?? 'Shape type này dùng dữ liệu x/y mặc định để xác định điểm sinh particle.';
 }
 
 const COLOR_REEL = [

@@ -23,6 +23,10 @@ body,
 button,
 .file-action {
   min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   border: 1px solid rgba(233, 238, 229, 0.2);
   border-radius: 6px;
   color: #e9eee5;
@@ -89,13 +93,30 @@ h2 {
 }
 
 h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 34px;
   line-height: 1;
 }
 
 h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 18px;
   line-height: 1.2;
+}
+
+.bi {
+  color: #e1b957;
+  font-size: 1em;
+  line-height: 1;
+}
+
+button .bi,
+.file-action .bi {
+  font-size: 13px;
 }
 
 .editor-section {
@@ -141,6 +162,9 @@ h2 {
 }
 
 .control-stack h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin: 4px 0 -4px;
   color: rgba(233, 238, 229, 0.7);
   font: 700 12px/1.2 Verdana, sans-serif;
@@ -154,6 +178,9 @@ h2 {
 }
 
 .asset-panel-stack h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin: 4px 0 0;
   color: rgba(233, 238, 229, 0.7);
   font: 700 12px/1.2 Verdana, sans-serif;
@@ -162,6 +189,9 @@ h2 {
 }
 
 .asset-panel-stack > p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin: 0;
   color: rgba(233, 238, 229, 0.72);
   font: 12px/1.4 Verdana, sans-serif;
@@ -209,6 +239,24 @@ h2 {
 .compact-action {
   min-height: 28px;
   padding: 0 10px;
+}
+
+.shape-type-description {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: -2px 0 0;
+  padding: 9px 10px;
+  border: 1px solid rgba(225, 185, 87, 0.18);
+  border-radius: 6px;
+  color: rgba(233, 238, 229, 0.74);
+  background: rgba(225, 185, 87, 0.06);
+  font: 12px/1.45 Verdana, sans-serif;
+}
+
+.shape-type-description .bi {
+  margin-top: 1px;
+  flex: 0 0 auto;
 }
 
 .custom-asset-list {
